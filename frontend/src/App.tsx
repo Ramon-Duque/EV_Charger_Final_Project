@@ -3,7 +3,9 @@ import './App.css';
 import { useRef, useEffect } from 'react';
 import { Place } from './models/Place';
 import { getPlaces } from '../src/services/apiPull';
+
 function App() {
+  
   const [places, setPlaces] = useState<Place>();
   useEffect(() => {
     getPlaces().then((res) => {

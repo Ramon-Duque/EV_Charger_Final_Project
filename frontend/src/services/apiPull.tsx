@@ -1,4 +1,3 @@
-
 import { useContext } from "react";
 import axios from "axios";
 import { Place } from "../models/Place";
