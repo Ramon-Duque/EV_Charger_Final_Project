@@ -1,27 +1,19 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-<<<<<<< HEAD
-import Map from './Components/map';
+import Evstation from './components/Evstation';
+import Map from './components/map';
 
-interface pos{
-    pos: number;
-}
 
-interface Coordinates {
+export interface Coordinates {
     lat: number;
     lng: number;
 };
-=======
-import  Map  from './components/map';
-
->>>>>>> 31769b9640a0c97aa5db63780dad302ff284af7c
 
 function App() {
     
 
     const [pos, setPos] = useState<Coordinates>();
   
-<<<<<<< HEAD
     useEffect(() => {
 
       if (navigator.geolocation) {
@@ -35,14 +27,13 @@ function App() {
           })
       }},[]);
 
- return (
+ return ( 
+    <div>
     
    <Map  pos= {pos}/>
+   
+   </div>
 
-=======
-  return (
-      <Map/>
->>>>>>> 31769b9640a0c97aa5db63780dad302ff284af7c
   );
 };
 
