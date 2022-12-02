@@ -1,24 +1,42 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
-import { useRef, useEffect } from 'react';
-import { Place } from './models/Place';
-import { getPlaces } from '../src/services/apiPull';
+import Map from './Components/map';
+
+interface pos{
+    pos: number;
+}
+
+interface Coordinates {
+    lat: number;
+    lng: number;
+};
 
 function App() {
+    
+
+    const [pos, setPos] = useState<Coordinates>();
   
-  const [places, setPlaces] = useState<Place>();
-  useEffect(() => {
-    getPlaces().then((res) => {
-      const {data} = res;
-      setPlaces(data);
-      console.log(res.data);
-    })
-  }, []);
-  return (
-    <div className="App">
-      <header>Hi</header>
-    </div>
+    useEffect(() => {
+
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position: GeolocationPosition) => {
+            const Coordinates = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude,
+          }
+          setPos(Coordinates);
+          })
+      }},[]);
+
+ return (
+    
+   <Map  pos= {pos}/>
+
   );
-}
+};
+
+
+
 export default App;
 

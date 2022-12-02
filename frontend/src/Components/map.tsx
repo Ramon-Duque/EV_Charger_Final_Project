@@ -1,33 +1,17 @@
 import { GoogleMap, useLoadScript } from '@react-google-maps/api';
-import { useState } from 'react'; 
+import  geoLocation  from '../App';
 
-interface Coordinates {
-  lat: number;
-  lng: number;
-};
 
-export default function Map(){
-  const [pos, setPos] = useState<Coordinates>();
-  
-  function geoLocation (){
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position: GeolocationPosition) => {
-          const Coordinates = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
-        }
-        setPos(Coordinates);
-        });
-      }};
+
+export default function Map({pos}: {pos:any}){
    const {isLoaded, loadError} = useLoadScript({
-     googleMapsApiKey: process.env.GoogleApiKey!,
+     googleMapsApiKey: process.env.REACT_APP_API_KEY!,
      libraries: ["places"],
    });
- 
+ console.log(process.env.REACT_APP_API_KEY)
+
    if (loadError) return <div>Error Loading Map</div>
-   if (!isLoaded) return( <><div>Loading Maps</div>
-   <button onClick={geoLocation}></button></>)
+   if (!isLoaded) return<div>Loading Maps</div>
  
    return (
      <div> 
@@ -40,4 +24,5 @@ export default function Map(){
  
      </div>
      );
- }
+    };
+ 
