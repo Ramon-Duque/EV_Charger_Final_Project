@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './App.css';
+<<<<<<< HEAD
 import Map from './Components/map';
 
 interface pos{
@@ -10,12 +11,17 @@ interface Coordinates {
     lat: number;
     lng: number;
 };
+=======
+import  Map  from './components/map';
+
+>>>>>>> 31769b9640a0c97aa5db63780dad302ff284af7c
 
 function App() {
     
 
     const [pos, setPos] = useState<Coordinates>();
   
+<<<<<<< HEAD
     useEffect(() => {
 
       if (navigator.geolocation) {
@@ -33,6 +39,10 @@ function App() {
     
    <Map  pos= {pos}/>
 
+=======
+  return (
+      <Map/>
+>>>>>>> 31769b9640a0c97aa5db63780dad302ff284af7c
   );
 };
 
