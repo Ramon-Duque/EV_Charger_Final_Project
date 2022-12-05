@@ -4,7 +4,7 @@ import  geoLocation  from '../App';
 
 
 export default function Map({pos}: {pos:any}){
-   const {isLoaded, loadError} = useLoadScript({
+  const {isLoaded, loadError} = useLoadScript({
      googleMapsApiKey: process.env.REACT_APP_API_KEY!,
      libraries: ["places"],
    });
