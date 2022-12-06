@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import Evstation from './components/Evstation';
 import Map from './components/map';
+import { Station } from './components/Chargestations';
 
 
 export interface Coordinates {
@@ -29,7 +30,7 @@ function App() {
 
  return ( 
     <div>
-    
+    <Station></Station>
    <Map  pos= {pos}/>
    
    </div>
