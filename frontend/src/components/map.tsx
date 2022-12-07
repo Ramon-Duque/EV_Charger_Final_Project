@@ -1,17 +1,17 @@
 import { GoogleMap, useLoadScript } from '@react-google-maps/api';
-import  geoLocation  from '../App';
-
 
 export default function Map({pos}: {pos:any}){
    const {isLoaded, loadError} = useLoadScript({
      googleMapsApiKey: process.env.REACT_APP_API_KEY!,
      libraries: ["places"],
    });
- console.log(process.env.REACT_APP_API_KEY)
 
    if (loadError) return <div>Error Loading Map</div>
    if (!isLoaded) return<div>Loading Maps</div>
- 
+   
+  //  let myResponseFromWeb = restaurants(1500,2000);
+  //  console.log("HERE's my big response!!: " + myResponseFromWeb);
+
    return (
      <div> 
        {/* When button is click function Geolocation runs */}

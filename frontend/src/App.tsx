@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import Evstation from './components/Evstation';
 import Map from './components/map';
 import { Station } from './components/Chargestations';
-
+import { getRestaurantsNearby } from './components/Restaurants';
+import { getMyTestResult } from './components/Restaurants';
 
 export interface Coordinates {
     lat: number;
@@ -27,11 +27,14 @@ function App() {
           setPos(Coordinates);
           })
       }},[]);
+      console.log("RESULT OF GET RESTAURANT IS!: " + getRestaurantsNearby);
+      console.log("TEST RESULT!: " + getMyTestResult);
 
  return ( 
     <div>
     <Station></Station>
    <Map  pos= {pos}/>
+   {/* {getRestaurantsNearby} */}
    
    </div>
 
