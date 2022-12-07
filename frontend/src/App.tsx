@@ -4,6 +4,7 @@ import Map from './components/map';
 import { Station } from './components/Chargestations';
 import { getRestaurantsNearby } from './components/Restaurants';
 import { getMyTestResult } from './components/Restaurants';
+import Restaurants from './models/Restaurants';
 
 export interface Coordinates {
     lat: number;
@@ -11,7 +12,15 @@ export interface Coordinates {
 };
 
 function App() {
-    
+
+    useEffect(() => {
+      testGetNearby();
+    }, []);
+
+    const testGetNearby = async () => {
+      const response = await getRestaurantsNearby();
+      console.log(response.data);
+    }
 
     const [pos, setPos] = useState<Coordinates>();
   
@@ -27,15 +36,12 @@ function App() {
           setPos(Coordinates);
           })
       }},[]);
-      console.log("RESULT OF GET RESTAURANT IS!: " + getRestaurantsNearby);
-      console.log("TEST RESULT!: " + getMyTestResult);
 
  return ( 
     <div>
-    <Station></Station>
-   <Map  pos= {pos}/>
-   {/* {getRestaurantsNearby} */}
-   
+    {/* <Station></Station> */}
+    <Map  pos= {pos}/>
+    <button className='btn' onClick={testGetNearby}>BIG Btn</button>  
    </div>
 
   );
