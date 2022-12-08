@@ -39,7 +39,7 @@ function App() {
 
  return ( 
     <div>
-    {/* <Station></Station> */}
+    <Station></Station>
     <Map  pos= {pos}/>
     <button className='btn' onClick={testGetNearby}>BIG Btn</button>  
    </div>
