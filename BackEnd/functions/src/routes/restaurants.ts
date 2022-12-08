@@ -13,9 +13,8 @@ restaurantRoutes.get('/restaurants', async (req, res) => {
    );
    console.log("I'm in /resturants in the backend!");
    res.json(response.data);
-  //  return response.data;
- });
+});
  
- 
+
  
 export default restaurantRoutes;
