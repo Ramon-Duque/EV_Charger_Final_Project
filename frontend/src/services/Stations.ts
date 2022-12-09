@@ -1,3 +1,4 @@
+import { Coordinates } from "../App";
 
 export const getStations = () => {
 	const options = {
@@ -8,7 +9,7 @@ export const getStations = () => {
 		}
 	};
 	
-	return fetch('https://ev-charging-stations.p.rapidapi.com/get_stations_1km?latitude=42.331429&longitude=-83.045753&region=us', options)
+	return fetch(`https://ev-charging-stations.p.rapidapi.com/get_stations_1km?latitude=42.331429&longitude=-83.045753&region=us`, options)
 		
 }
 

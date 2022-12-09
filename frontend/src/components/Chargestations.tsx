@@ -1,23 +1,32 @@
 import { useEffect, useState } from 'react'
 import { getStations } from '../services/Stations'
-import { StationType } from '../models/Station';
+import { StationType, StationInfo } from '../models/Station';
+import Marker from './Marker';
+import { Data, GoogleMap } from '@react-google-maps/api';
+import { Coordinates } from '../App';
 
 export function Station() {
-  const [station, setStation] = useState<StationType[]>([])
-
+  const [stations, setStations] = useState<StationInfo[]>()
   useEffect(() => {
     getStations().then(response => response.json())
-    .then(response => console.log(response))
-    .then(data => setStation)
+    .then(data => setStations(data.stations))
     .catch(err => console.error(err));
     
   }, []);
+
+
+ 
+   
     
   return (
-    <div>
-       
-       
-    </div>
+   <div>
+   {stations?.map(station => 
+       <p>{station.longitude} - {station.street_address} - {station.ev_network}</p>)}
+   </div>
   )
 
-}
+};
+
+
+
+

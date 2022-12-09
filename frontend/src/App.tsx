@@ -33,14 +33,16 @@ function App() {
               lat: position.coords.latitude,
               lng: position.coords.longitude,
           }
+          
           setPos(Coordinates);
           })
       }},[]);
-
+      console.log(pos)
  return ( 
     <div>
-    <Station></Station>
+    
     <Map  pos= {pos}/>
+    <Station></Station>
     <button className='btn' onClick={testGetNearby}>BIG Btn</button>  
    </div>
 
