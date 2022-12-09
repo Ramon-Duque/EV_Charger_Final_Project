@@ -28,6 +28,8 @@ function App() {
           })
       }},[]);
 
+      // console.log(pos);
+
  return ( 
     <div>
     {/* <Station></Station> */}
