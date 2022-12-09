@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import Map from './components/map';
-import { Station } from './components/Chargestations';
+// import { Station } from './components/map';
 import { getRestaurantsNearby } from './components/Restaurants';
 import { getMyTestResult } from './components/Restaurants';
 import Restaurants from './models/Restaurants';
@@ -42,7 +42,7 @@ function App() {
     <div>
     
     <Map  pos= {pos}/>
-    <Station></Station>
+    {/* {pos &&<Station pos={pos}/>} */}
     <button className='btn' onClick={testGetNearby}>BIG Btn</button>  
    </div>
 
