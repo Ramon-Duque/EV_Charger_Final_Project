@@ -1,4 +1,5 @@
-import { GoogleMap, useLoadScript } from '@react-google-maps/api';
+import { GoogleMap, InfoWindow, useLoadScript } from '@react-google-maps/api';
+import React, { useRef } from 'react';
 import { useEffect, useState } from 'react';
 import  geoLocation, { Coordinates }  from '../App';
 import { StationInfo } from '../models/Station';
@@ -13,24 +14,10 @@ export default function Map({pos}: {pos:any}):any{
    });
 
 
-    function Station({pos}: {pos:Coordinates}) {
-      const [stations, setStations] = useState<StationInfo[]>()
-      useEffect(() => {
-        getStations({pos}).then(response => response.json())
-        .then(data => setStations(data.stations))
-        .catch(err => console.error(err));
-        
-      }, []);
-      console.log(stations)
-
-      // function stationPos(station) {
-     
-     
-      // }
    if (loadError) return <div>Error Loading Map</div>
    if (!isLoaded) return<div>Loading Maps</div>
 
-   Station({pos});
+   
  
    return (
     
@@ -41,8 +28,7 @@ export default function Map({pos}: {pos:any}):any{
        mapContainerClassName="map-container"
        zoom={15} 
        center={pos}>
-        {/* {stations?.map(station => 
-       <Marker  position={pos} onClick={() =>stationPos(station)}>{station.station_name} - {station.street_address} - {station.ev_network}</Marker>)} */}
+       <Marker pos={pos}/>
        
        
          
@@ -51,7 +37,11 @@ export default function Map({pos}: {pos:any}):any{
      </div>
      );
     };
-  }
+
+
+  
 
 
  
+
+
