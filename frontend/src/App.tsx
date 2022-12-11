@@ -1,10 +1,14 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import Map from './components/map';
+import { DisplayCafes, DisplayRestaurants, 
+  DisplayMovieTheaters, DisplaySpas, 
+  DisplayArtGalleries } from './components/ActivitiesNearby';
 import { getRestaurantsNearby } from './components/Restaurants';
 import { Station } from './components/map';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
+
 
 export interface Coordinates {
     lat: number;
@@ -28,6 +32,8 @@ function App() {
       }},[]);
       console.log(pos)
 
+      // console.log(pos);
+
  return ( 
     <div>
       <Header></Header>
@@ -35,11 +41,14 @@ function App() {
       {/* {pos &&<Station pos={pos}/>} */}
       <Station></Station>
       <Footer></Footer>
+    {/* <DisplayRestaurants></DisplayRestaurants>  */}
+    {/* <DisplayCafes></DisplayCafes> */}
+    {/* <DisplayMovieTheaters></DisplayMovieTheaters> */}
+    {/* <DisplaySpas></DisplaySpas> */}
+    {/* <DisplayArtGalleries></DisplayArtGalleries> */}
    </div>
 
   );
 };
 
-
 export default App;
-

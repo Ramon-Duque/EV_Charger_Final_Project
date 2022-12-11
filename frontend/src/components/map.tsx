@@ -52,7 +52,7 @@ export default function Map({pos}: {pos:any}):any{
 
    if (loadError) return <div>Error Loading Map</div>
    if (!isLoaded) return<div>Loading Maps</div>
- 
+
    return (
      <div> 
        <GoogleMap 
@@ -65,3 +65,4 @@ export default function Map({pos}: {pos:any}):any{
      </div>
      );
 };
+
