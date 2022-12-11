@@ -6,11 +6,19 @@ import { getRestaurantsNearby, getCafesNearby,
 
 export function DisplayRestaurants(){
     const [restaurants, setRestaurants] = useState<Activities[]>([]);
-  
     // useEffect(() => {
-    // getRestaurantsNearby().then((response) => {
+    //     getRestaurantsNearby().then((response) => {
+    //         const { data } = response;
+    //         setRestaurants(data.results);
+    //         console.log("array restaurant results " + restaurants[0].latitude) 
+    //     });
+    //     }, []);
+
+    // useEffect(() => {
+    // getRestaurantsNearby(restaurants[0].latitude, restaurants[0].longitude).then((response) => {
     //     const { data } = response;
-    //     setRestaurants(data.results); 
+    //     setRestaurants(data.results);
+    //     console.log("array restaurant results " + restaurants[0].latitude) 
     // });
     // }, []);
 

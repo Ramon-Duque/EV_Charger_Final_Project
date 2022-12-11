@@ -1,5 +1,5 @@
 .runtimeconfig.json
-
+.env.local
 node_modules
 # Logs
 logs

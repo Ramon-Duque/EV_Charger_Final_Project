@@ -17,3 +17,4 @@ spaRoutes.get('/spas', async (req, res) => {
  
  
 export default spaRoutes;
+

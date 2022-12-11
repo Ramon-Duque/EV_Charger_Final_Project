@@ -41,13 +41,12 @@ function App() {
       {/* {pos &&<Station pos={pos}/>} */}
       <Station></Station>
       <Footer></Footer>
-    {/* <DisplayRestaurants></DisplayRestaurants>  */}
-    {/* <DisplayCafes></DisplayCafes> */}
-    {/* <DisplayMovieTheaters></DisplayMovieTheaters> */}
-    {/* <DisplaySpas></DisplaySpas> */}
-    {/* <DisplayArtGalleries></DisplayArtGalleries> */}
-   </div>
-
+      {/* <DisplayRestaurants></DisplayRestaurants>  */}
+      {/* <DisplayCafes></DisplayCafes> */}
+      {/* <DisplayMovieTheaters></DisplayMovieTheaters> */}
+      {/* <DisplaySpas></DisplaySpas> */}
+      {/* <DisplayArtGalleries></DisplayArtGalleries> */}
+     </div>
   );
 };
 

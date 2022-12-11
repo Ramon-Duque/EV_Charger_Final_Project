@@ -4,7 +4,7 @@ import axios from 'axios';
 let currentPort = '5001';
 
 const restaurantUrl = 'http://127.0.0.1:' + currentPort + '/evcharger-a2044/us-central1/api/restaurants';
-
+//maybe make async
 export const getRestaurantsNearby = (latitude: number, longitude: number) => {
     console.log("Get station lat and long " + latitude, longitude);
     return axios.get(restaurantUrl, {

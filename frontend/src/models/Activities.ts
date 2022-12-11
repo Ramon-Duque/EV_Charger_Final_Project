@@ -4,8 +4,8 @@ export interface Activities {
     vicinity: string;
     photos: Photos[];
     plus_code: PostalCode[];
-    // latitude: number;
-    // longitude: number;
+    latitude: number;
+    longitude: number;
 }
 
 export interface Photos {

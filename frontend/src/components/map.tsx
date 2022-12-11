@@ -4,6 +4,7 @@ import  geoLocation, { Coordinates }  from '../App';
 import { StationInfo } from '../models/Station';
 import { getRestaurantsNearby } from '../services/NearbyService';
 import { getStations } from '../services/Stations';
+import { DisplayRestaurants } from './ActivitiesNearby';
 import  Marker  from './Marker';
 
 // export function Station({pos}: {pos:Coordinates}) {
@@ -29,18 +30,19 @@ export function Station() {
 
   }
   function getNearby(latitude: number, longitude: number){
+    // console.log("get nearby: " + latitude + " " + longitude);
     getRestaurantsNearby(latitude, longitude);
   }
  
   return (   
     <div> 
       {stations?.map(station => 
-        <ul>
-          <li>{station.station_name}</li>
-          <li>{station.street_address}</li>
-          <li>{station.ev_network}</li>
-          <button onClick={() => getNearby(station.latitude, station.longitude)}>Click For Places</button>
-        </ul>
+        <>
+          <ul><h4>{station.station_name}</h4></ul>
+          <ul>{station.street_address}</ul>
+          {/* <ul>{station.ev_network}</ul> */}
+          <ul><button onClick={() => getNearby(station.latitude, station.longitude)}>Click For Places</button></ul>
+        </>
       )} 
 
     {/* <Marker onClick={stationPos(station)}><p>{station.station_name} - {station.latitude} - {station.longitude}</p></Marker> */}
