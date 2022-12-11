@@ -1,5 +1,13 @@
 export interface StationType {
-    fuel_type_code: string
-    status_code: string
-    ev_connector_types: string
+    region: string;
+    total: number;
+    stations: Array<Object> | null
+}
+
+export interface StationInfo {
+    latitude: number;
+    longitude: number;
+    station_name: string;
+    street_address: string;
+    ev_network: string;
 }

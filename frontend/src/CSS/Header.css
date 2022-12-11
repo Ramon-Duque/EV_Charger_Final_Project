@@ -1,0 +1,19 @@
+.nav-bar{
+    background-color: green;
+    font-family: 'Kanit', sans-serif;
+    position: relative;
+    padding: 0px 20px;
+    border-bottom: 2px solid gainsboro;
+}
+
+h1{
+    color: aliceblue;
+    margin-top: 0;
+    padding-top: 15px;
+    font-size: 24px;
+}
+
+
+@media screen and (min-width:768px) {
+    
+}

@@ -1,23 +1,40 @@
 import { useEffect, useState } from 'react'
 import { getStations } from '../services/Stations'
-import { StationType } from '../models/Station';
+import { StationType, StationInfo } from '../models/Station';
+// import Marker from './Marker';
+import { Data, GoogleMap } from '@react-google-maps/api';
+import { Coordinates } from '../App';
+import { response } from 'express';
 
-export function Station() {
-  const [station, setStation] = useState<StationType[]>([])
-
-  useEffect(() => {
-    getStations().then(response => response.json())
-    .then(response => console.log(response))
-    .then(data => setStation)
-    .catch(err => console.error(err));
+//calling get fetch
+// export function Station({pos}: {pos:Coordinates}) {
+//   const [stations, setStations] = useState<StationInfo[]>()
+//   useEffect(() => {
+//     getStations({pos}).then(response => response.json())
+//     .then(data => setStations(data.stations))
+//     .catch(err => console.error(err));
     
-  }, []);
-    
-  return (
-    <div>
+//   }, []);
+      
+//     console.log(stations)
+    // function createBtn() => {
+    //   for (let i = 0; i < stations.length; i++) {
+    //     const element = document.createElement("button");
+        
+    //   }
+    // }
+   //onclick to storelat,lng -> map.tsx
+  //    function stationPos(station) {
        
        
-    </div>
-  )
-
-}
+  //    }
+      
+    // return (
+    //  <div>
+     {/* {stations?.map(station =>  */}
+     {/* <Marker onClick={() =>stationPos(station)}>{station.station_name} - {station.street_address} - {station.ev_network}</Marker>)} */}
+    //  </div>
+    // )
+  
+//   };
+ 
