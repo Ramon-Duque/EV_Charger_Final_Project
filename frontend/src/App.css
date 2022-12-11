@@ -1,12 +1,15 @@
 .map-container{
-  width: 98vw;
-  height: 70vh;
+  width: 80vw;
+  height: 100vh;
   border: green 5px solid;
-  margin: 20px;
+  margin: auto;
 }
 
-.Geolocation-btn{
-  width: 100px;
-  height: 25px;
-  margin: 20px 20px;
+/* .body{
+  width: 100vw;
+  height: 100vh;
+} */
+
+@media screen and (min-width:768px) {
+
 }

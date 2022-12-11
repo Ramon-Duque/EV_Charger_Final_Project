@@ -5,10 +5,12 @@ import { StationInfo } from '../models/Station';
 import { getStations } from '../services/Stations';
 import  Marker  from './Marker';
 
-export function Station({pos}: {pos:Coordinates}) {
+// export function Station({pos}: {pos:Coordinates}) {
+export function Station() {
   const [stations, setStations] = useState<StationInfo[]>()
   useEffect(() => {
-    getStations({pos}).then(response => response.json())
+    // getStations({pos}).then(response => response.json())
+    getStations().then(response => response.json())
     .then(data => setStations(data.stations))
     .catch(err => console.error(err));
     
@@ -18,15 +20,26 @@ export function Station({pos}: {pos:Coordinates}) {
   function stationPos(station: StationInfo) {
     let lat = station.latitude;
     let lng = station.longitude;
+    let name = station.station_name;
     console.log("A Station: " + station.station_name + " " + lat + " " + lng );
+
+    // return (name + " " + lat + " " + lng);  
+    return (lat + " " + lng);  
 
   }
 
   return (   
     <div> 
       {stations?.map(station => 
-       <Marker onClick={stationPos(station)}><p>{station.station_name} - {station.latitude} - {station.longitude}</p></Marker>
+        <ul>
+          <li>{station.station_name}</li>
+          <li>{station.street_address}</li>
+          <li>{station.ev_network}</li>
+          <button>Click For Places</button>
+        </ul>
       )} 
+
+    {/* <Marker onClick={stationPos(station)}><p>{station.station_name} - {station.latitude} - {station.longitude}</p></Marker> */}
     </div>
     );
 };
@@ -47,7 +60,7 @@ export default function Map({pos}: {pos:any}):any{
        zoom={15} 
        center={pos}>
        <Marker pos={pos}/>
-      {pos &&<Station pos={pos}/>}      
+      {/* {pos &&<Station pos={pos}/>}       */}
        </GoogleMap> 
      </div>
      );

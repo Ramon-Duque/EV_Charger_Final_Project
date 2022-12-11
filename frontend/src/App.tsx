@@ -3,6 +3,8 @@ import './App.css';
 import Map from './components/map';
 import { getRestaurantsNearby } from './components/Restaurants';
 import { Station } from './components/map';
+import { Header } from './components/Header';
+import { Footer } from './components/Footer';
 
 export interface Coordinates {
     lat: number;
@@ -28,9 +30,11 @@ function App() {
 
  return ( 
     <div>
-    <Map  pos= {pos}/>
-    {pos &&<Station pos={pos}/>}
-
+      <Header></Header>
+      <Map  pos= {pos}/>
+      {/* {pos &&<Station pos={pos}/>} */}
+      <Station></Station>
+      <Footer></Footer>
    </div>
 
   );

@@ -1,6 +1,6 @@
 import React from 'react';
 import { StationInfo } from '../models/Station';
-import './Marker.css';
+import '../CSS/Marker.css';
 
 const Marker = (props: any) => {
     const { color, name, id } = props;
