@@ -2,6 +2,7 @@ import { GoogleMap, InfoWindow, useLoadScript } from '@react-google-maps/api';
 import { useEffect, useState } from 'react';
 import  geoLocation, { Coordinates }  from '../App';
 import { StationInfo } from '../models/Station';
+import { getRestaurantsNearby } from '../services/NearbyService';
 import { getStations } from '../services/Stations';
 import  Marker  from './Marker';
 
@@ -27,7 +28,10 @@ export function Station() {
     return (lat + " " + lng);  
 
   }
-
+  function getNearby(latitude: number, longitude: number){
+    getRestaurantsNearby(latitude, longitude);
+  }
+ 
   return (   
     <div> 
       {stations?.map(station => 
@@ -35,7 +39,7 @@ export function Station() {
           <li>{station.station_name}</li>
           <li>{station.street_address}</li>
           <li>{station.ev_network}</li>
-          <button>Click For Places</button>
+          <button onClick={() => getNearby(station.latitude, station.longitude)}>Click For Places</button>
         </ul>
       )} 
 

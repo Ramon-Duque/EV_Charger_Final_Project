@@ -7,12 +7,12 @@ import { getRestaurantsNearby, getCafesNearby,
 export function DisplayRestaurants(){
     const [restaurants, setRestaurants] = useState<Activities[]>([]);
   
-    useEffect(() => {
-    getRestaurantsNearby().then((response) => {
-        const { data } = response;
-        setRestaurants(data.results); 
-    });
-    }, []);
+    // useEffect(() => {
+    // getRestaurantsNearby().then((response) => {
+    //     const { data } = response;
+    //     setRestaurants(data.results); 
+    // });
+    // }, []);
 
     return (
         <div>

@@ -4,7 +4,7 @@ import Map from './components/map';
 import { DisplayCafes, DisplayRestaurants, 
   DisplayMovieTheaters, DisplaySpas, 
   DisplayArtGalleries } from './components/ActivitiesNearby';
-import { getRestaurantsNearby } from './components/Restaurants';
+// import { getRestaurantsNearby } from './components/Restaurants';
 import { Station } from './components/map';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
