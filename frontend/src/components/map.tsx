@@ -8,6 +8,7 @@ import { getStations } from "../services/Stations";
 import { DisplayRestaurants } from "./ActivitiesNearby";
 import Marker from "./Marker";
 import { BsStar, BsFillStarFill } from "react-icons/bs";
+import '../CSS/Stations.css';
 
 // export function Station({pos}: {pos:Coordinates}) {
 export function Station() {
@@ -26,33 +27,21 @@ export function Station() {
   const favoritesClicked = (id: number) => {
       const clicked = favorites.some((station: StationInfo) => station.id === id);
       return clicked;
-
-  function stationPos(station: StationInfo) {
-    let lat = station.latitude;
-    let lng = station.longitude;
-    let name = station.station_name;
-    console.log("A Station: " + station.station_name + " " + lat + " " + lng);
-
-    return lat + " " + lng;
-  }
-
-    // return (name + " " + lat + " " + lng);
     
   }
   function getNearby(latitude: number, longitude: number) {
-    // console.log("get nearby: " + latitude + " " + longitude);
     getRestaurantsNearby(latitude, longitude);
   }
 
   return (
-    <div>
+    <div className='station-container'>
       {stations?.map((station) => (
         <>
           <ul>
-            <h4>{station.station_name}</h4>
+            <h4 id='station-header'>{station.station_name}</h4>
           </ul>
-          <ul>{station.street_address}</ul>
-          {/* <ul>{station.ev_network}</ul> */}
+          <ul>Address: {station.street_address}</ul>
+          <ul>Electric Vehicle Network: {station.ev_network}</ul>          
           <ul>
             <button
               onClick={() => getNearby(station.latitude, station.longitude)}
@@ -73,10 +62,9 @@ export function Station() {
              )}
             </div>
           </ul>
-        </>
+          </>
       ))}
 
-      {/* <Marker onClick={stationPos(station)}><p>{station.station_name} - {station.latitude} - {station.longitude}</p></Marker> */}
     </div>
   );
 }
@@ -91,11 +79,13 @@ export default function Map({ pos }: { pos: any }): any {
   if (!isLoaded) return <div>Loading Maps</div>;
 
   return (
-    <div>
+    <div><main>
       <GoogleMap mapContainerClassName="map-container" zoom={15} center={pos}>
         <Marker pos={pos} />
         {/* {pos &&<Station pos={pos}/>}       */}
+        <Station></Station>
       </GoogleMap>
+      </main>
     </div>
   );
 }

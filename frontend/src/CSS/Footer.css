@@ -1,5 +1,8 @@
-.footer{
+#footer{
     background-color: green;
+}
+.footer{
+    background-color: aqua;
     font-family: 'Kanit', sans-serif;
     position: relative;
 }

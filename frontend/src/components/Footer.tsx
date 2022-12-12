@@ -2,8 +2,8 @@ import '../CSS/Footer.css';
 
 export const Footer = () => {
     return (
-        <div className='footer'>
-            <h6>Stations</h6>
+        <div id='footer' className='footer' >
+            <h6>Electric Vehicle Charging Stations</h6>
         </div>
     )
 }
