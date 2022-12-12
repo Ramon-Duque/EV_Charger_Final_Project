@@ -10,4 +10,5 @@ export interface StationInfo {
     station_name: string;
     street_address: string;
     ev_network: string;
+    id: number;
 }

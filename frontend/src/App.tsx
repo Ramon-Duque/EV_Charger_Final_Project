@@ -8,6 +8,11 @@ import { DisplayCafes, DisplayRestaurants,
 import { Station } from './components/map';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
+import { BrowserRouter as Router, Route, Routes} from 'react-router-dom'
+import FavoritePage from './components/FavoritePage';
+import { StationInfo } from './models/Station';
+import { getStations } from './services/Stations';
+import { Data } from '@react-google-maps/api';
 
 
 export interface Coordinates {
@@ -34,11 +39,21 @@ function App() {
 
       // console.log(pos);
 
+    
+
  return ( 
     <div>
+      <Router>
       <Header></Header>
-      <Map  pos= {pos}/>
+      
+      <Routes>
+        <Route path= '/' element={<Map pos={pos}/>}/>
+        <Route path= '/favorites' element={<FavoritePage/>}/>
+        
+      {/* <Map  pos= {pos}/> */}
       {/* {pos &&<Station pos={pos}/>} */}
+      
+      </Routes>
       <Station></Station>
       <Footer></Footer>
       {/* <DisplayRestaurants></DisplayRestaurants>  */}
@@ -46,6 +61,7 @@ function App() {
       {/* <DisplayMovieTheaters></DisplayMovieTheaters> */}
       {/* <DisplaySpas></DisplaySpas> */}
       {/* <DisplayArtGalleries></DisplayArtGalleries> */}
+      </Router>
      </div>
   );
 };
