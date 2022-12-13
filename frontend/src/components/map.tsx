@@ -7,24 +7,21 @@ import { getStations } from "../services/Stations";
 import Marker from "./Marker";
 import { BsStar, BsFillStarFill } from "react-icons/bs";
 import '../CSS/Stations.css';
-import { getCafesNearby, getRestaurantsNearby } from "../services/NearbyService";
-
-import { DisplayRestaurants } from "./ActivitiesNearby"; 
+ 
 interface IStationProps {
-  selectStation:(station: StationInfo)=> void, pos?: Coordinates, stations: StationInfo[]
+ selectStation:(station: StationInfo)=> void, pos?: Coordinates
 }
-export function Station({selectStation, pos, stations}: IStationProps) {   // {stations}: {stations: StationInfo[]}
-  // export function Station({selectStation, pos}: IStationProps) { 
+ 
 // export function Station({pos}: {pos:Coordinates}) {
-// export function Station({selectStation, pos}: IStationProps) {
-//  const [stations, setStations] = useState<StationInfo[]>();
-//  useEffect(() => {
-//    // getStations({pos}).then(response => response.json())
-//    getStations()
-//      .then((response) => response.json())
-//      .then((data) => setStations(data.stations))
-//      .catch((err) => console.error(err));
-//  }, []);
+export function Station({selectStation, pos}: IStationProps) {
+ const [stations, setStations] = useState<StationInfo[]>();
+ useEffect(() => {
+   // getStations({pos}).then(response => response.json())
+   getStations()
+     .then((response) => response.json())
+     .then((data) => setStations(data.stations))
+     .catch((err) => console.error(err));
+ }, []);
  
  const { favorites, addFavorite, removeFavorite } = useContext(FavoritesContext);
  
@@ -32,10 +29,7 @@ export function Station({selectStation, pos, stations}: IStationProps) {   // {s
      const clicked = favorites.some((station: StationInfo) => station.id === id);
      return clicked;
  }
-  // function getNearby(latitude: number, longitude: number) {
-  //   getRestaurantsNearby(latitude, longitude);
-  // }
-
+ 
  // const [isShown, setIsShown] = useState(false);
  // const handleClick = () => {
  //   setIsShown(current => !current);
@@ -77,7 +71,7 @@ export function Station({selectStation, pos, stations}: IStationProps) {   // {s
  );
 }
  
-export default function Map({ pos, stations }: { pos: any, stations: StationInfo[] } ): any {
+export default function Map({ pos }: { pos: any }): any {
  const { isLoaded, loadError } = useLoadScript({
    googleMapsApiKey: process.env.REACT_APP_API_KEY!,
    libraries: ["places"],
@@ -89,16 +83,12 @@ export default function Map({ pos, stations }: { pos: any, stations: StationInfo
  return (
    <div><main>
      <GoogleMap mapContainerClassName="map-container" zoom={15} center={pos}>
-     {stations?.map((station) =>  <Marker pos={{lat:station.latitude, lng:station.longitude}} />)}
-
        <Marker pos={pos} />
        {/* {pos &&<Station pos={pos}/>}       */}
        {/* <Station></Station> */}
      </GoogleMap>
-           {/* <Station stations={stations} selectStation={function (station: StationInfo): void {
-        throw new Error("Function not implemented.");
-      } }></Station> */}
      </main>
    </div>
  );
 }
+

@@ -10,7 +10,7 @@ export function DisplayRestaurants({station}: {station:StationInfo}){
    useEffect(() => {
        getRestaurantsNearby(station.latitude, station.longitude).then((response) => {
            setRestaurants(response);
-           // console.log(response);
+        //    console.log(response);
        });
    }, []);
        console.log(restaurants);
