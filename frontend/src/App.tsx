@@ -13,6 +13,7 @@ import FavoritePage from './components/FavoritePage';
 import { StationInfo } from './models/Station';
 import { getStations } from './services/Stations';
 import { Data } from '@react-google-maps/api';
+import FavoritesContextProvider from './context/FavoriteContextProvider';
 
 
 export interface Coordinates {
@@ -43,6 +44,7 @@ function App() {
 
  return ( 
     <div>
+      <FavoritesContextProvider>
       <Router>
       <Header></Header>
       
@@ -62,6 +64,7 @@ function App() {
       {/* <DisplaySpas></DisplaySpas> */}
       {/* <DisplayArtGalleries></DisplayArtGalleries> */}
       </Router>
+      </FavoritesContextProvider>
      </div>
   );
 };

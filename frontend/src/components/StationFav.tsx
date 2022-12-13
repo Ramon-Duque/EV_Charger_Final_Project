@@ -25,7 +25,7 @@ export const StationFav = () => {
               </div>
               {favoritesClicked(station.id) ? (
               <button className="remove-btn" onClick={() => removeFavorite(station.id)}>
-                <CiSquareRemove size={25} /> <p className="remove-text">Remove</p>
+                <CiSquareRemove size={25} /> <p className="remove-text"></p>
               </button>
             ) : (
             <button onClick={() => addFavorite(station)}>

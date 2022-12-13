@@ -4,7 +4,7 @@ import { Router } from "express";
 import { ObjectId } from "mongodb";
 export const favRoutes = Router();
 
-favRoutes.get("/favorites", async (req, res) => {
+favRoutes.get("/", async (req, res) => {
   try {
     const client = await getClient();
     const results = await client
@@ -19,7 +19,7 @@ favRoutes.get("/favorites", async (req, res) => {
   }
 });
 
-favRoutes.post("/favorites", async (req, res) => {
+favRoutes.post("/", async (req, res) => {
   const favorite = req.body as Favorite;
   try {
     const client = await getClient();
@@ -31,7 +31,7 @@ favRoutes.post("/favorites", async (req, res) => {
   }
 });
 
-favRoutes.delete("/favorites/:id", async (req, res) => {
+favRoutes.delete("/:id", async (req, res) => {
   const id = req.params.id;
   try {
     const client = await getClient();
@@ -50,7 +50,7 @@ favRoutes.delete("/favorites/:id", async (req, res) => {
   }
 });
 
-favRoutes.put("/favorites/:id", async (req, res) => {
+favRoutes.put("/:id", async (req, res) => {
   const id = req.params.id;
   const data = req.body as Favorite;
   delete data._id;
