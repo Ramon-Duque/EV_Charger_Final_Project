@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { FavoritesContext } from "../context/FavoriteContext";
 import { StationInfo } from '../models/Station';
 import { CiSquareRemove } from "react-icons/ci";
+import  '../CSS/StationFav.css'
 
 
 
@@ -25,7 +26,7 @@ export const StationFav = () => {
               </div>
               {favoritesClicked(station.id) ? (
               <button className="remove-btn" onClick={() => removeFavorite(station.id)}>
-                <CiSquareRemove size={25} /> <p className="remove-text"></p>
+                <CiSquareRemove size={25} /> 
               </button>
             ) : (
             <button onClick={() => addFavorite(station)}>
@@ -38,4 +39,13 @@ export const StationFav = () => {
         <h1></h1>
         )}
         </div>
-)}
+)
+
+// return (
+//     <div className='favoritesCont'>
+
+//     </div>
+// )
+
+
+}

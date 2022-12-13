@@ -11,15 +11,15 @@ import { BsStar, BsFillStarFill } from "react-icons/bs";
 import '../CSS/Stations.css';
 
 // export function Station({pos}: {pos:Coordinates}) {
-export function Station() {
-  const [stations, setStations] = useState<StationInfo[]>();
-  useEffect(() => {
-    // getStations({pos}).then(response => response.json())
-    getStations()
-      .then((response) => response.json())
-      .then((data) => setStations(data.stations))
-      .catch((err) => console.error(err));
-  }, []);
+export function Station({stations}: {stations: StationInfo[]}) {
+  // const [stations, setStations] = useState<StationInfo[]>();
+  // useEffect(() => {
+  //   // getStations({pos}).then(response => response.json())
+  //   getStations()
+  //     .then((response) => response.json())
+  //     .then((data) => setStations(data.stations))
+  //     .catch((err) => console.error(err));
+  // }, []);
   console.log(stations);
 
   const { favorites, addFavorite, removeFavorite } = useContext(FavoritesContext);
@@ -69,7 +69,7 @@ export function Station() {
   );
 }
 
-export default function Map({ pos }: { pos: any }): any {
+export default function Map({ pos, stations }: { pos: any, stations: StationInfo[] } ): any {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_API_KEY!,
     libraries: ["places"],
@@ -81,10 +81,12 @@ export default function Map({ pos }: { pos: any }): any {
   return (
     <div><main>
       <GoogleMap mapContainerClassName="map-container" zoom={15} center={pos}>
+        {stations?.map((station) =>  <Marker pos={{lat:station.latitude, lng:station.longitude}} />)}
         <Marker pos={pos} />
         {/* {pos &&<Station pos={pos}/>}       */}
-        <Station></Station>
+       
       </GoogleMap>
+      <Station stations={stations}></Station>
       </main>
     </div>
   );

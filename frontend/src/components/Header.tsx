@@ -1,5 +1,6 @@
 import React from 'react';
 import '../CSS/Header.css';
+import { Link } from 'react-router-dom'
 
 
 
@@ -17,7 +18,7 @@ export const Header = () => {
             className='nav-menu'
             style={{display: showMenu ? "block" : "none"}}>
                 <ul>
-                    <li><a href= "/favorites">Favorites</a></li>
+                    <li><Link to= "/favorites">Favorites</Link></li>
                 </ul>
             </div>
         </div>

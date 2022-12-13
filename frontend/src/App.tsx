@@ -21,6 +21,10 @@ export interface Coordinates {
     lng: number;
 };
 
+export interface Props {
+  stations: StationInfo[]
+}
+
 function App() {
 
     const [pos, setPos] = useState<Coordinates>();
@@ -38,6 +42,15 @@ function App() {
       }},[]);
       console.log(pos)
 
+      const [stations, setStations] = useState<StationInfo[]>([]);
+  useEffect(() => {
+    // getStations({pos}).then(response => response.json())
+    getStations()
+      .then((response) => response.json())
+      .then((data) => setStations(data.stations))
+      .catch((err) => console.error(err));
+  }, []);
+
       // console.log(pos);
 
     
@@ -49,14 +62,14 @@ function App() {
       <Header></Header>
       
       <Routes>
-        <Route path= '/' element={<Map pos={pos}/>}/>
+        <Route path= '/' element={<Map pos={pos} stations={stations}/>}/>
         <Route path= '/favorites' element={<FavoritePage/>}/>
         
       {/* <Map  pos= {pos}/> */}
       {/* {pos &&<Station pos={pos}/>} */}
       
       </Routes>
-      <Station></Station>
+      {/* <Station></Station> */}
       <Footer></Footer>
       {/* <DisplayRestaurants></DisplayRestaurants>  */}
       {/* <DisplayCafes></DisplayCafes> */}
