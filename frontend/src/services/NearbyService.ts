@@ -1,39 +1,52 @@
 import axios from 'axios';
-
-//Update port for each firebase deploy
-let currentPort = '5001';
-
-const restaurantUrl = 'http://127.0.0.1:' + currentPort + '/evcharger-a2044/us-central1/api/restaurants';
-//maybe make async
-export const getRestaurantsNearby = (latitude: number, longitude: number) => {
-    console.log("Get station lat and long " + latitude, longitude);
-    return axios.get(restaurantUrl, {
-    params: {
-        latitude: latitude,
-        longitude: longitude
-    }}).then(res => res.data);
+ 
+const restaurantUrl = 'http://127.0.0.1:5001/evcharger-a2044/us-central1/api/restaurants';
+ 
+export const getRestaurantsNearby = (latitude: any, longitude: any) => {
+   console.log("Get station lat and long " + latitude, longitude);
+   return axios.get(restaurantUrl, {
+   params: {
+       latitude: latitude,
+       longitude: longitude
+   }}).then(res => res.data.results);
 };
-
+ 
 const cafeUrl = 'http://127.0.0.1:5001/evcharger-a2044/us-central1/api/cafes';
-
-export const getCafesNearby = () => {
-    return axios.get(cafeUrl);
+ 
+export const getCafesNearby = (latitude: any, longitude: any) => {
+   return axios.get(cafeUrl, {
+       params: {
+           latitude: latitude,
+           longitude: longitude
+       }}).then(res => res.data.results);
 };
-
+ 
 const movieTheaterUrl = 'http://127.0.0.1:5001/evcharger-a2044/us-central1/api/movie-theaters';
-
-export const getMovieTheatersNearby = () => {
-    return axios.get(movieTheaterUrl);
+ 
+export const getMovieTheatersNearby = (latitude: any, longitude: any) => {
+   return axios.get(movieTheaterUrl, {
+       params: {
+           latitude: latitude,
+           longitude: longitude
+       }}).then(res => res.data.results);
 };
-
+ 
 const spaUrl = 'http://127.0.0.1:5001/evcharger-a2044/us-central1/api/spas';
-
-export const getSpasNearby = () => {
-    return axios.get(spaUrl);
+ 
+export const getSpasNearby = (latitude: any, longitude: any) => {
+   return axios.get(spaUrl, {
+       params: {
+           latitude: latitude,
+           longitude: longitude
+       }}).then(res => res.data.results);
 };
-
+ 
 const artGalleryUrl = 'http://127.0.0.1:5001/evcharger-a2044/us-central1/api/art-galleries';
-
-export const getArtGalleriesNearby = () => {
-    return axios.get(artGalleryUrl);
+ 
+export const getArtGalleriesNearby = (latitude: any, longitude: any) => {
+   return axios.get(artGalleryUrl, {
+       params: {
+           latitude: latitude,
+           longitude: longitude
+       }}).then(res => res.data.results);
 };
