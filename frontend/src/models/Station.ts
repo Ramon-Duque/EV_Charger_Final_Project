@@ -5,6 +5,7 @@ export interface StationType {
 }
 
 export interface StationInfo {
+    geometry: any;
     latitude: number;
     longitude: number;
     station_name: string;

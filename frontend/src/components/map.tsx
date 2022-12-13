@@ -1,14 +1,21 @@
 
-import { GoogleMap, InfoWindow, useLoadScript } from "@react-google-maps/api";
+import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
 import { useContext, useEffect, useState } from "react";
 import geoLocation, { Coordinates } from "../App";
 import { FavoritesContext } from "../context/FavoriteContext";
 import { StationInfo } from "../models/Station";
 import { getStations } from "../services/Stations";
-import Marker from "./Marker";
+// import Marker from "./Marker";
 import { BsStar, BsFillStarFill } from "react-icons/bs";
 import '../CSS/Stations.css';
 import { getCafesNearby, getRestaurantsNearby } from "../services/NearbyService";
+
+interface Place{
+  geometry:{location: google.maps.LatLng};
+  name: string;
+}
+
+const libraries: ('places' | 'geometry' | 'localContext' | 'visualization' | 'drawing')[] = [];
 
 interface IStationProps {
  selectStation:(station: StationInfo)=> void, pos?: Coordinates, stations: StationInfo[]
@@ -77,9 +84,9 @@ export default function Map({ pos, stations }: { pos: any, stations: StationInfo
   return (
     <div><main>
       <GoogleMap mapContainerClassName="map-container" zoom={15} center={pos}>
-      {stations?.map((station) =>  <Marker pos={{lat:station.latitude, lng:station.longitude}} />)}
-  
-        <Marker pos={pos} />
+      {stations?.map((station, id) =>(
+        <Marker position={{lat:station.latitude, lng:station.longitude}} visible={true} key= {id} />))}
+        <Marker position={pos} />
         {/* {pos &&<Station pos={pos}/>}       */}
         {/* <Station></Station> */}
       </GoogleMap>
