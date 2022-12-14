@@ -17,7 +17,7 @@ export function DisplayRestaurants({station}: {station:StationInfo}){
    return (
        <div>
            <h2>Restaurants near your station!</h2>
-           {restaurants.map((restaurant, i) => (
+           {restaurants.slice(0,5).map((restaurant, i) => (
                <><h4>{restaurant.name}</h4>
                <ul>Ratings: {restaurant.rating}</ul>
                <ul>Address: {restaurant.vicinity}</ul>
@@ -38,7 +38,7 @@ export function DisplayCafes({station}: {station:StationInfo}){
    return (
        <div>
            <h2>Cafe's near your station!</h2>
-           {cafes.map((cafe, i) => (
+           {cafes.slice(0,5).map((cafe, i) => (
                <><h4>{cafe.name}</h4>
                <ul>Ratings: {cafe.rating}</ul>
                <ul>Address: {cafe.vicinity}</ul></>           
@@ -58,7 +58,7 @@ export function DisplayMovieTheaters({station}: {station:StationInfo}){
    return (
        <div>
            <h2>Movie Theaters near your station!</h2>
-           {movieTheater.map((movies, i) => (
+           {movieTheater.slice(0,5).map((movies, i) => (
                <><h4>{movies.name}</h4>
                <ul>Ratings: {movies.rating}</ul>
                <ul>Address: {movies.vicinity}</ul></>           
@@ -78,7 +78,7 @@ export function DisplaySpas({station}: {station:StationInfo}){
    return (
        <div>
            <h2>Spa's near your station</h2>
-           {spas.map((spa, i) => (
+           {spas.slice(0,5).map((spa, i) => (
                <><h4>{spa.name}</h4>
                <ul>Ratings: {spa.rating}</ul>
                <ul>Address: {spa.vicinity}</ul></>            
@@ -98,7 +98,7 @@ export function DisplayArtGalleries({station}: {station:StationInfo}){
    return (
        <div>
            <h2>Art Galleries near your station!</h2>
-           {artGalleries.map((gallery, i) => (
+           {artGalleries.slice(0,5).map((gallery, i) => (
                <><h4>{gallery.name}</h4>
                <ul>{gallery.rating}</ul>
                <ul>Address: {gallery.vicinity}</ul></>

@@ -13,7 +13,8 @@ import { StationInfo } from './models/Station';
 import { getStations } from './services/Stations';
 import { Data } from '@react-google-maps/api';
 import FavoritesContextProvider from './context/FavoriteContextProvider';
- 
+import { response } from 'express';
+
 export interface Coordinates {
   lat: number;
   lng: number;
@@ -25,6 +26,7 @@ export interface Props {
  
 function App() {
   const [currentStation, setCurrentStation]  = useState<StationInfo>()
+  const [currentButton, setCurrentButton] = useState<string>()
   const [pos, setPos] = useState<Coordinates>();
  
    useEffect(() => {
@@ -49,8 +51,9 @@ function App() {
         .catch((err) => console.error(err));
     }, []);
  
-    function selectStation(station: StationInfo) {
-      setCurrentStation(station)
+    function selectStation(station: StationInfo, buttonName: string) {
+      setCurrentStation(station);
+      setCurrentButton(buttonName);
     }
  
    
@@ -70,11 +73,11 @@ return (
       </Routes>
       {/* <Station></Station> */}
       <Station selectStation={selectStation} stations={stations}></Station>
-      {currentStation && <DisplayRestaurants station={currentStation}></DisplayRestaurants> }
-      {currentStation && <DisplayCafes station={currentStation}></DisplayCafes>}
-      {currentStation && <DisplayMovieTheaters station={currentStation}></DisplayMovieTheaters>}
-      {currentStation && <DisplaySpas station={currentStation}></DisplaySpas>}
-      {currentStation && <DisplayArtGalleries station={currentStation}></DisplayArtGalleries>}
+     {(currentStation && currentButton === 'RestaurantButton') && <DisplayRestaurants station={currentStation}></DisplayRestaurants> }
+     {(currentStation && currentButton === 'CafeButton' ) && <DisplayCafes station={currentStation}></DisplayCafes>}
+     {(currentStation && currentButton === 'MovieTheaterButton' ) && <DisplayMovieTheaters station={currentStation}></DisplayMovieTheaters>}
+     {(currentStation && currentButton === 'SpaButton' ) && <DisplaySpas station={currentStation}></DisplaySpas>}
+     {(currentStation && currentButton === 'ArtGalleryButton' ) && <DisplayArtGalleries station={currentStation}></DisplayArtGalleries>}
       <Footer></Footer>
       </Router>
       </FavoritesContextProvider>
