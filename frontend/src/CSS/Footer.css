@@ -1,14 +1,12 @@
 #footer{
     background-color: green;
-}
-.footer{
-    background-color: aqua;
     font-family: 'Kanit', sans-serif;
     position: relative;
+    box-shadow: inset 0 0 8px #000000;
 }
 
 h6{
-    color: aliceblue;
+    color: rgb(216, 229, 253);
     margin-bottom: 0;
     padding-top: 2px;
     padding-bottom: 2px;

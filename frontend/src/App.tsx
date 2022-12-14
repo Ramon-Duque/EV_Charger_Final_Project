@@ -56,6 +56,7 @@ function App() {
         <Routes>
         <Route path= '/' element={<Map pos={pos} stations={stations}/>}/>
           <Route path= '/favorites' element={<FavoritePage/>}/>
+          {/* <Route path='/' /> */}
         
         {/* <Map  pos= {pos}/> */}
         {/* {pos &&<Station pos={pos}/>} */}

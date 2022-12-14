@@ -33,17 +33,23 @@ export function Station({selectStation, pos, stations}: IStationProps) {
   }
 
   const [toggle, setToggle] = useState(false);
+  function handleClick(){
+    setToggle(toggle => !toggle);
+  }
+  let toggleCheck = toggle ? ' active': '';
 
   return (
     <div className='station-container'>
       {stations?.map((station) => (
         <>
           <ul>
-            <h4 id='station-header'>{station.station_name}</h4>
+            <h4 id='station-header'>{station.ev_network}</h4>
           </ul>
+          <ul> {station.station_name}</ul>
           <ul>Address: {station.street_address}</ul>
-          <ul>Electric Vehicle Network: {station.ev_network}</ul>        
+          <ul>Detriot, MI</ul>
           <ul className="station-buttons">
+            {/* <button className={`restaurant-btn${toggleCheck}`} onClick={() => selectStation(station, "RestaurantButton")}> Restaurants </button> */}
             <button className="restaurant-btn" onClick={() => selectStation(station, "RestaurantButton")}> Restaurants </button>
             <button className="cafe-btn" onClick={() => selectStation(station, "CafeButton")}> Cafes </button>
             <button className="movie-theater-btn" onClick={() => selectStation(station, "MovieTheaterButton")}> Movie Theaters </button>
@@ -96,6 +102,7 @@ export default function Map({ pos, stations }: { pos: any, stations: StationInfo
         <Marker position={pos} />
 
       </GoogleMap>
+      <header className="Station-header-under-map"><strong>Electric Vechile Charging Stations Near You</strong></header>
       <Station selectStation={selectStation} stations={stations}></Station>
      {(currentStation && currentButton === 'RestaurantButton') && <DisplayRestaurants station={currentStation}></DisplayRestaurants> }
      {(currentStation && currentButton === 'CafeButton' ) && <DisplayCafes station={currentStation}></DisplayCafes>}

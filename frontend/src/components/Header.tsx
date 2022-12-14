@@ -12,15 +12,19 @@ export const Header = () => {
 
     return (
         <div className='nav-bar'>
-            <h1>Electric Vehicle Charging Stations</h1>
-            <button className='nav-button' onClick={toggleMenu}> <i className='bars'></i>Nav</button>
+            <h1>E Charge</h1>
+                <ul>
+                    <li><Link to={'/'}><button className='nav-button' id='home'>Home</button></Link></li>
+                    <li><Link to={'/favorites'}><button className='nav-button' id='home'>Favorites</button></Link></li>
+                </ul>
+            {/* <button className='nav-button' onClick={toggleMenu}> <i className='bars'></i>Nav</button>
             <div 
             className='nav-menu'
             style={{display: showMenu ? "block" : "none"}}>
                 <ul>
                     <li><Link to= "/favorites">Favorites</Link></li>
                 </ul>
-            </div>
+            </div> */}
         </div>
     )
 }

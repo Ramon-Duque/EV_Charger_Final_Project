@@ -4,7 +4,8 @@ import { StationInfo } from '../models/Station';
 import { getRestaurantsNearby, getCafesNearby,
    getMovieTheatersNearby, getSpasNearby,
    getArtGalleriesNearby } from '../services/NearbyService';
- 
+import '../CSS/ActivityList.css'; 
+import { BsFillStarFill } from 'react-icons/bs';
 
 export function DisplayRestaurants({station}: {station:StationInfo}){
    const [restaurants, setRestaurants] = useState<Activities[]>([]);
@@ -15,12 +16,12 @@ export function DisplayRestaurants({station}: {station:StationInfo}){
    }, []);
        console.log(restaurants);
    return (
-       <div>
-           <h2>Restaurants near your station!</h2>
+       <div className='restaurant-list'>
+           <h2 id='list-header'>Restaurants near your station!</h2>
            {restaurants.slice(0,5).map((restaurant, i) => (
-               <><h4>{restaurant.name}</h4>
-               <ul>Ratings: {restaurant.rating}</ul>
-               <ul>Address: {restaurant.vicinity}</ul>
+               <><h4 id='location-name'>{restaurant.name}</h4>
+               <ul id='rating'>{restaurant.rating} <BsFillStarFill/>'s</ul>
+               <ul id='address'>Address: {restaurant.vicinity} MI</ul>
                </>
            ))}
        </div>
@@ -36,12 +37,12 @@ export function DisplayCafes({station}: {station:StationInfo}){
    }, []);
  
    return (
-       <div>
-           <h2>Cafe's near your station!</h2>
+       <div className='cafe-list'>
+           <h2 id='list-header'>Cafe's near your station!</h2>
            {cafes.slice(0,5).map((cafe, i) => (
-               <><h4>{cafe.name}</h4>
-               <ul>Ratings: {cafe.rating}</ul>
-               <ul>Address: {cafe.vicinity}</ul></>           
+               <><h4 id='location-name'>{cafe.name}</h4>
+               <ul id='rating'>{cafe.rating} <BsFillStarFill/>'s</ul>
+               <ul id='address'>Address: {cafe.vicinity} MI</ul></>           
            ))}
        </div>
    );
@@ -56,12 +57,12 @@ export function DisplayMovieTheaters({station}: {station:StationInfo}){
    }, []);
  
    return (
-       <div>
-           <h2>Movie Theaters near your station!</h2>
+       <div className='movie-list'>
+           <h2 id='list-header'>Movie Theaters near your station!</h2>
            {movieTheater.slice(0,5).map((movies, i) => (
-               <><h4>{movies.name}</h4>
-               <ul>Ratings: {movies.rating}</ul>
-               <ul>Address: {movies.vicinity}</ul></>           
+               <><h4 id='location-name'>{movies.name}</h4>
+               <ul id='rating'>{movies.rating} <BsFillStarFill/>'s</ul>
+               <ul id='address'>Address: {movies.vicinity} MI</ul></>           
            ))}
        </div>
    );
@@ -76,12 +77,12 @@ export function DisplaySpas({station}: {station:StationInfo}){
    }, []);
  
    return (
-       <div>
-           <h2>Spa's near your station</h2>
+       <div className='spa-list'>
+           <h2 id='list-header'>Spa's near your station</h2>
            {spas.slice(0,5).map((spa, i) => (
-               <><h4>{spa.name}</h4>
-               <ul>Ratings: {spa.rating}</ul>
-               <ul>Address: {spa.vicinity}</ul></>            
+               <><h4 id='location-name'>{spa.name}</h4>
+               <ul id='rating'>{spa.rating} <BsFillStarFill/>'s</ul>
+               <ul id='address'>Address: {spa.vicinity} MI</ul></>            
                ))}
        </div>
    );
@@ -96,12 +97,12 @@ export function DisplayArtGalleries({station}: {station:StationInfo}){
    }, []);
  
    return (
-       <div>
-           <h2>Art Galleries near your station!</h2>
+       <div className='art-gallery-list'>
+           <h2 id='list-header'>Art Galleries near your station!</h2>
            {artGalleries.slice(0,5).map((gallery, i) => (
-               <><h4>{gallery.name}</h4>
-               <ul>{gallery.rating}</ul>
-               <ul>Address: {gallery.vicinity}</ul></>
+               <><h4 id='location-name'>{gallery.name}</h4>
+               <ul id='rating'>{gallery.rating} <BsFillStarFill/>'s</ul>
+               <ul id='address'>Address: {gallery.vicinity} MI</ul></>
            ))}
        </div>
    );
