@@ -3,11 +3,11 @@ body{
 }
 
 .map-container{
-  width: 88vw;
+  width: 87vw;
   /* margin-left: 40px;
   margin-right: 40px; */
-  height: 50vh;
-  border: green 5px solid;
+  height: 60vh;
+  border: green 4px solid;
   margin: auto;
   margin-top: 20px;
   border-radius: 1em;
@@ -38,4 +38,8 @@ body{
     margin-top: 20px;
     font-size: 30px;
   }
+
+  /* .map-container{ */
+    /* float: left; */
+  /* } */
 }

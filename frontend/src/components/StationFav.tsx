@@ -24,7 +24,7 @@ export const StationFav = () => {
               <p>
               <li
                className="station-name"><label>Name:</label> {station.station_name} <br></br>
-               <label>Location: </label> {station.street_address}<br></br>
+               <label>Location: </label> {station.street_address} Detroit, MI<br></br>
                <label>Network: </label> {station.ev_network}
                </li>
               </p>

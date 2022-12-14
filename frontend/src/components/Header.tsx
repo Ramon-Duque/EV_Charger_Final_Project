@@ -12,7 +12,7 @@ export const Header = () => {
 
     return (
         <div className='nav-bar'>
-            <h1>E Charge</h1>
+            <h1 id='ECharge'>E Charge</h1>
                 <ul>
                     <li><Link to={'/'}><button className='nav-button' id='home'>Home</button></Link></li>
                     <li><Link to={'/favorites'}><button className='nav-button' id='home'>Favorites</button></Link></li>
