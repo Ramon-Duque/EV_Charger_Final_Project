@@ -1,10 +1,6 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import Map from './components/map';
-import { DisplayCafes, DisplayRestaurants,
-DisplayMovieTheaters, DisplaySpas,
-DisplayArtGalleries } from './components/ActivitiesNearby';
-import { Station } from './components/map';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom'
@@ -13,7 +9,6 @@ import { StationInfo } from './models/Station';
 import { getStations } from './services/Stations';
 import { Data } from '@react-google-maps/api';
 import FavoritesContextProvider from './context/FavoriteContextProvider';
-import { response } from 'express';
 
 export interface Coordinates {
   lat: number;
@@ -25,8 +20,8 @@ export interface Props {
 }
  
 function App() {
-  const [currentStation, setCurrentStation]  = useState<StationInfo>()
-  const [currentButton, setCurrentButton] = useState<string>()
+  // const [currentStation, setCurrentStation]  = useState<StationInfo>()
+  // const [currentButton, setCurrentButton] = useState<string>()
   const [pos, setPos] = useState<Coordinates>();
  
    useEffect(() => {
@@ -51,38 +46,26 @@ function App() {
         .catch((err) => console.error(err));
     }, []);
  
-    function selectStation(station: StationInfo, buttonName: string) {
-      setCurrentStation(station);
-      setCurrentButton(buttonName);
-    }
- 
    
-return (
-  <div>
-      <FavoritesContextProvider>
-      <Router>
-      <Header></Header>
-    
-      <Routes>
-      <Route path= '/' element={<Map pos={pos} stations={stations}/>}/>
-        <Route path= '/favorites' element={<FavoritePage/>}/>
+  return (
+    <div>
+        <FavoritesContextProvider>
+        <Router>
+        <Header></Header>
       
-      {/* <Map  pos= {pos}/> */}
-      {/* {pos &&<Station pos={pos}/>} */}
-    
-      </Routes>
-      {/* <Station></Station> */}
-      <Station selectStation={selectStation} stations={stations}></Station>
-     {(currentStation && currentButton === 'RestaurantButton') && <DisplayRestaurants station={currentStation}></DisplayRestaurants> }
-     {(currentStation && currentButton === 'CafeButton' ) && <DisplayCafes station={currentStation}></DisplayCafes>}
-     {(currentStation && currentButton === 'MovieTheaterButton' ) && <DisplayMovieTheaters station={currentStation}></DisplayMovieTheaters>}
-     {(currentStation && currentButton === 'SpaButton' ) && <DisplaySpas station={currentStation}></DisplaySpas>}
-     {(currentStation && currentButton === 'ArtGalleryButton' ) && <DisplayArtGalleries station={currentStation}></DisplayArtGalleries>}
-      <Footer></Footer>
-      </Router>
-      </FavoritesContextProvider>
-   </div>
-  );
+        <Routes>
+        <Route path= '/' element={<Map pos={pos} stations={stations}/>}/>
+          <Route path= '/favorites' element={<FavoritePage/>}/>
+        
+        {/* <Map  pos= {pos}/> */}
+        {/* {pos &&<Station pos={pos}/>} */}
+      
+        </Routes>
+        <Footer></Footer>
+        </Router>
+        </FavoritesContextProvider>
+    </div>
+    );
 };
 
 export default App;

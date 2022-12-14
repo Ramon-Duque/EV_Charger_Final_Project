@@ -1,4 +1,3 @@
-
 import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
 import { useContext, useEffect, useState } from "react";
 import geoLocation, { Coordinates } from "../App";
@@ -8,7 +7,9 @@ import { getStations } from "../services/Stations";
 // import Marker from "./Marker";
 import { BsStar, BsFillStarFill } from "react-icons/bs";
 import '../CSS/Stations.css';
-// import RestaurantToggleButton from "./ToggleButton";
+import { DisplayCafes, DisplayRestaurants,
+  DisplayMovieTheaters, DisplaySpas,
+  DisplayArtGalleries } from './ActivitiesNearby';
 
 interface Place{
   geometry:{location: google.maps.LatLng};
@@ -43,12 +44,11 @@ export function Station({selectStation, pos, stations}: IStationProps) {
           <ul>Address: {station.street_address}</ul>
           <ul>Electric Vehicle Network: {station.ev_network}</ul>        
           <ul className="station-buttons">
-            {/* <RestaurantToggleButton/> */}
             <button className="restaurant-btn" onClick={() => selectStation(station, "RestaurantButton")}> Restaurants </button>
             <button className="cafe-btn" onClick={() => selectStation(station, "CafeButton")}> Cafes </button>
             <button className="movie-theater-btn" onClick={() => selectStation(station, "MovieTheaterButton")}> Movie Theaters </button>
             <button className="spa-btn" onClick={() => selectStation(station, "SpaButton")}> Spas </button>
-            {/* <button className="art-gallery-btn" onClick={() => selectStation(station, "ArtGalleryButton")}> Art Galleries </button> */}
+            <button className="art-gallery-btn" onClick={() => selectStation(station, "ArtGalleryButton")}> Art Galleries </button>
             <div className="favButtons">
             {favoritesClicked(station.id) ? (
               <button className="rem-btn"
@@ -70,7 +70,9 @@ export function Station({selectStation, pos, stations}: IStationProps) {
 }
 
 export default function Map({ pos, stations }: { pos: any, stations: StationInfo[] } ): any {
-
+  const [currentStation, setCurrentStation]  = useState<StationInfo>()
+  const [currentButton, setCurrentButton] = useState<string>()
+  
   const { isLoaded, loadError } = useLoadScript({
   googleMapsApiKey: process.env.REACT_APP_API_KEY!,
   libraries: ["places"],
@@ -79,16 +81,27 @@ export default function Map({ pos, stations }: { pos: any, stations: StationInfo
   if (loadError) return <div>Error Loading Map</div>;
   if (!isLoaded) return <div>Loading Maps</div>;
 
+
+
+  function selectStation(station: StationInfo, buttonName: string) {
+    setCurrentStation(station);
+    setCurrentButton(buttonName);
+  }
+
   return (
     <div><main>
       <GoogleMap mapContainerClassName="map-container" zoom={15} center={pos}>
       {stations?.map((station, id) =>(
         <Marker position={{lat:station.latitude, lng:station.longitude}} visible={true} key= {id} />))}
         <Marker position={pos} />
-        {/* {pos &&<Station pos={pos}/>}       */}
-        {/* <Station></Station> */}
-      </GoogleMap>
 
+      </GoogleMap>
+      <Station selectStation={selectStation} stations={stations}></Station>
+     {(currentStation && currentButton === 'RestaurantButton') && <DisplayRestaurants station={currentStation}></DisplayRestaurants> }
+     {(currentStation && currentButton === 'CafeButton' ) && <DisplayCafes station={currentStation}></DisplayCafes>}
+     {(currentStation && currentButton === 'MovieTheaterButton' ) && <DisplayMovieTheaters station={currentStation}></DisplayMovieTheaters>}
+     {(currentStation && currentButton === 'SpaButton' ) && <DisplaySpas station={currentStation}></DisplaySpas>}
+     {(currentStation && currentButton === 'ArtGalleryButton' ) && <DisplayArtGalleries station={currentStation}></DisplayArtGalleries>}
 
       </main>
     </div>
