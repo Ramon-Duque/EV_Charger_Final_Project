@@ -10,6 +10,8 @@ import '../CSS/Stations.css';
 import { DisplayCafes, DisplayRestaurants,
   DisplayMovieTheaters, DisplaySpas,
   DisplayArtGalleries } from './ActivitiesNearby';
+import { VscSymbolEvent } from 'react-icons/vsc';
+import { FcChargeBattery, FcLowBattery, FcMiddleBattery, FcHighBattery, FcFullBattery } from 'react-icons/fc';
 
 interface Place{
   geometry:{location: google.maps.LatLng};
@@ -43,18 +45,18 @@ export function Station({selectStation, pos, stations}: IStationProps) {
       {stations?.map((station) => (
         <>
           <ul>
-            <h4 id='station-header'>{station.ev_network}</h4>
+            <h4 id='station-header'><FcChargeBattery/>{station.ev_network}</h4>
           </ul>
           <ul> {station.station_name}</ul>
-          <ul>Address: {station.street_address}</ul>
+          <p>Address: {station.street_address}</p>
           <ul>Detriot, MI</ul>
           <ul className="station-buttons">
             {/* <button className={`restaurant-btn${toggleCheck}`} onClick={() => selectStation(station, "RestaurantButton")}> Restaurants </button> */}
-            <button className="restaurant-btn" onClick={() => selectStation(station, "RestaurantButton")}> Restaurants </button>
-            <button className="cafe-btn" onClick={() => selectStation(station, "CafeButton")}> Cafes </button>
-            <button className="movie-theater-btn" onClick={() => selectStation(station, "MovieTheaterButton")}> Movie Theaters </button>
-            <button className="spa-btn" onClick={() => selectStation(station, "SpaButton")}> Spas </button>
-            <button className="art-gallery-btn" onClick={() => selectStation(station, "ArtGalleryButton")}> Art Galleries </button>
+            <button className="restaurant-btn" onClick={() => selectStation(station, "RestaurantButton")}><FcMiddleBattery/> Restaurants </button>
+            <button className="cafe-btn" onClick={() => selectStation(station, "CafeButton")}><FcHighBattery/> Cafes </button>
+            <button className="movie-theater-btn" onClick={() => selectStation(station, "MovieTheaterButton")}><FcLowBattery/> Movie Theaters </button>
+            <button className="spa-btn" onClick={() => selectStation(station, "SpaButton")}><FcMiddleBattery/> Spas </button>
+            <button className="art-gallery-btn" onClick={() => selectStation(station, "ArtGalleryButton")}><FcLowBattery/> Art Galleries </button>
             <div className="favButtons">
             {favoritesClicked(station.id) ? (
               <button className="rem-btn"
@@ -95,14 +97,17 @@ export default function Map({ pos, stations }: { pos: any, stations: StationInfo
   }
 
   return (
-    <div><main>
+    <div>
+      <header className="map-header"><strong>Relax and Recharge</strong></header>
+      <p>Finding nearby charging station is now made easy.</p>
+      <main>
       <GoogleMap mapContainerClassName="map-container" zoom={15} center={pos}>
       {stations?.map((station, id) =>(
         <Marker position={{lat:station.latitude, lng:station.longitude}} visible={true} key= {id} />))}
         <Marker position={pos} />
 
       </GoogleMap>
-      <header className="Station-header-under-map"><strong>Electric Vechile Charging Stations Near You</strong></header>
+      <header className="Station-header-under-map"><strong>Electric Vehicle Charging Stations</strong></header>
       <Station selectStation={selectStation} stations={stations}></Station>
      {(currentStation && currentButton === 'RestaurantButton') && <DisplayRestaurants station={currentStation}></DisplayRestaurants> }
      {(currentStation && currentButton === 'CafeButton' ) && <DisplayCafes station={currentStation}></DisplayCafes>}

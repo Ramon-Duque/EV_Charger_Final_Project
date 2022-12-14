@@ -21,12 +21,14 @@
  .movie-theater-btn,
  .spa-btn,
  .art-gallery-btn {
-    background-color: green;
+    /* background-color: green; */
+    /* background-color: rgb(0, 112, 0); */
+    background-color: rgb(21, 77, 26);
     color: white;
     border: 1px solid black;
     margin: 2px;
     border-radius: .2em;
-    width: 120px;
+    width: 135px;
     height: 25px;
  }
 
@@ -46,8 +48,12 @@
  .rem-btn:hover,
  .fav-btn:hover {
     background-color: tan;
-    background-color: rgba(93, 187, 47, 0.897);
-    color: black;
+    background-color: rgba(180, 126, 25, 0.514);
+    background-color: rgb(21, 77, 26);
+    background-color: rgb(0, 112, 0);
+    /* background-color: rgba(93, 187, 47, 0.897); */
+    /* color: black; */
+    color: white;
     border: 1px solid black;
     margin: 2px;
  } 
@@ -55,6 +61,8 @@
  .rem-btn,
  .fav-btn{
     background-color: green;
+    background-color: rgb(77, 139, 48);
+    background-color: rgb(21, 77, 26);
     color: white;
     border: 1px solid black;
     margin: 2px;
