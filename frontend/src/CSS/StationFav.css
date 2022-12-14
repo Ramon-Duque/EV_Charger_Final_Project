@@ -1,0 +1,65 @@
+.favDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5px;
+}
+
+.Favorites {
+    margin-left: 25px;
+    border-width: 5px;
+    border-color: red;
+    /* display: flex;
+    justify-content: center; */
+    
+}
+
+h2 {
+    color:green;
+    text-decoration: underline;
+    display: flex;
+    justify-content: center;
+}
+
+.remove-btn {
+    border-radius: 8px;
+    background-color: green;
+    color: white;
+    margin: 50px;
+}
+
+p {
+    color: black;
+    
+}
+.favorite-card {
+    margin-right:200px;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    
+}
+
+.Favorites .favorite-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: solid;
+    border-color: green;
+    border-radius: 15px;
+    margin-top: 15px ;
+    padding-left: 50px;
+    background-color: tan;
+    margin-left: 50px;
+}
+
+li {
+    list-style-type: none;
+    font-weight: bold;
+}
+
+label {
+    color:red;
+    text-decoration: underline;
+    
+}

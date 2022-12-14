@@ -21,13 +21,16 @@ export const StationFav = () => {
             {favorites.length > 0 ? (favorites.map((station) => (
           <div className="favorite-card" key={station.id}>
             <div className="">
-            
-              <p className="station-name">{station.station_name} - {station.street_address}</p>
+              <p>
+              <li
+               className="station-name"><label>Name:</label> {station.station_name} <br></br>
+               <label>Location: </label> {station.street_address}<br></br>
+               <label>Network: </label> {station.ev_network}
+               </li>
+              </p>
               </div>
               {favoritesClicked(station.id) ? (
-              <button className="remove-btn" onClick={() => removeFavorite(station.id)}>
-                <CiSquareRemove size={25} /> 
-              </button>
+              <button className="remove-btn" onClick={() => removeFavorite(station.id)}>X</button>
             ) : (
             <button onClick={() => addFavorite(station)}>
                 Add to Favorites

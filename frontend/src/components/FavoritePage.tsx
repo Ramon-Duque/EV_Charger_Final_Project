@@ -5,7 +5,7 @@ import '../CSS/StationFav.css'
 const FavoritePage = () => {
   return (
     <div className='favDiv'>
-        <h2>Favorites</h2>
+        <h2>Favorite Stations</h2>
         <div className='favorites'>
           <StationFav></StationFav>
         </div>
