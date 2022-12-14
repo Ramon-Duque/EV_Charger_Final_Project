@@ -1,4 +1,5 @@
 .station-container{
+    width: 500px;
     border: 2px solid black;
     margin-top: 0px;
     margin-bottom: 10px;
@@ -70,6 +71,11 @@
     width: 150px;
     height: 25px;
  }
+
+ .stations{
+   border: 2px solid black;
+   margin: 8px;
+ }
   
   
  /* Desktop */
@@ -80,7 +86,7 @@
 
     .station-container{
       border: 2px solid black;
-      margin-top: 0px;
+      margin-top: 20px;
       margin-bottom: 10px;
       margin-left: 40px;
       margin-right: 40px;
@@ -89,6 +95,12 @@
       background-color: cornsilk;
       border-radius: 1em;
       box-shadow: inset 0 0 5px #000000;
+      padding: 8px;
+      height: 375px;
+      overflow: scroll;
+      width:700px;
    }  
  }
+
+ 
  

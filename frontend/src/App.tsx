@@ -48,7 +48,7 @@ function App() {
  
    
   return (
-    <div>
+    <div className='app'>
         <FavoritesContextProvider>
         <Router>
         <Header></Header>

@@ -4,7 +4,7 @@ import geoLocation, { Coordinates } from "../App";
 import { FavoritesContext } from "../context/FavoriteContext";
 import { StationInfo } from "../models/Station";
 import { getStations } from "../services/Stations";
-// import Marker from "./Marker";
+import '../CSS/Map.css';
 import { BsStar, BsFillStarFill } from "react-icons/bs";
 import '../CSS/Stations.css';
 import { DisplayCafes, DisplayRestaurants,
@@ -42,8 +42,10 @@ export function Station({selectStation, pos, stations}: IStationProps) {
 
   return (
     <div className='station-container'>
+      <h1>Electric Vehicle Charging Stations Near You</h1>
       {stations?.map((station) => (
         <>
+      <div className='stations'>
           <ul>
             <h4 id='station-header'><FcChargeBattery/>{station.ev_network}</h4>
           </ul>
@@ -71,6 +73,7 @@ export function Station({selectStation, pos, stations}: IStationProps) {
             )}
             </div>
           </ul>
+            </div>
           </>
       ))}
     </div>
@@ -97,25 +100,25 @@ export default function Map({ pos, stations }: { pos: any, stations: StationInfo
   }
 
   return (
-    <div>
+    <div className='webpage'>
       <header className="map-header"><strong>Relax and Recharge</strong></header>
       <p>Finding nearby charging station is now made easy.</p>
-      <main>
+      
       <GoogleMap mapContainerClassName="map-container" zoom={15} center={pos}>
+        <Marker position={pos} />
       {stations?.map((station, id) =>(
         <Marker position={{lat:station.latitude, lng:station.longitude}} visible={true} key= {id} />))}
-        <Marker position={pos} />
 
       </GoogleMap>
-      <header className="Station-header-under-map"><strong>Electric Vehicle Charging Stations</strong></header>
+      {/* <header className="Station-header-under-map"><strong>Electric Vechile Charging Stations Near You</strong></header> */}
+      <div className='results'>
       <Station selectStation={selectStation} stations={stations}></Station>
      {(currentStation && currentButton === 'RestaurantButton') && <DisplayRestaurants station={currentStation}></DisplayRestaurants> }
      {(currentStation && currentButton === 'CafeButton' ) && <DisplayCafes station={currentStation}></DisplayCafes>}
      {(currentStation && currentButton === 'MovieTheaterButton' ) && <DisplayMovieTheaters station={currentStation}></DisplayMovieTheaters>}
      {(currentStation && currentButton === 'SpaButton' ) && <DisplaySpas station={currentStation}></DisplaySpas>}
      {(currentStation && currentButton === 'ArtGalleryButton' ) && <DisplayArtGalleries station={currentStation}></DisplayArtGalleries>}
-
-      </main>
+          </div>
     </div>
   );
 }
