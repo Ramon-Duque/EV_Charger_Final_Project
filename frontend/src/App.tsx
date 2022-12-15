@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 import FavoritePage from './components/FavoritePage';
 import { StationInfo } from './models/Station';
 import { getStations } from './services/Stations';
-import { Data } from '@react-google-maps/api';
+
 import FavoritesContextProvider from './context/FavoriteContextProvider';
 
 export interface Coordinates {
@@ -20,8 +20,6 @@ export interface Props {
 }
  
 function App() {
-  // const [currentStation, setCurrentStation]  = useState<StationInfo>()
-  // const [currentButton, setCurrentButton] = useState<string>()
   const [pos, setPos] = useState<Coordinates>();
  
    useEffect(() => {
@@ -39,7 +37,6 @@ function App() {
  
     const [stations, setStations] = useState<StationInfo[]>([]);
     useEffect(() => {
-    // getStations({pos}).then(response => response.json())
       getStations()
         .then((response) => response.json())
         .then((data) => setStations(data.stations))
@@ -56,11 +53,6 @@ function App() {
         <Routes>
         <Route path= '/' element={<Map pos={pos} stations={stations}/>}/>
           <Route path= '/favorites' element={<FavoritePage/>}/>
-          {/* <Route path='/' /> */}
-        
-        {/* <Map  pos= {pos}/> */}
-        {/* {pos &&<Station pos={pos}/>} */}
-      
         </Routes>
         <Footer></Footer>
         </Router>

@@ -6,23 +6,23 @@
 }
 
 .Favorites {
-    margin-left: 25px;
     border-width: 5px;
-    border-color: red;
-    /* display: flex;
-    justify-content: center; */
+    border-color: green;
     height: 100vh;
-    
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
+
 
 h2 {
     color:green;
     text-decoration: underline;
-    display: flex;
-    justify-content: center;
+    
 }
 
 .remove-btn {
+    width: 100px;
     border-radius: 8px;
     background-color: green;
     color: white;
@@ -34,7 +34,7 @@ p {
     
 }
 .favorite-card {
-    margin-right:200px;
+    width: 80%;
     display: flex;
     justify-content: center;
     justify-items: center;
@@ -51,7 +51,7 @@ p {
     margin-top: 15px ;
     padding-left: 50px;
     background-color: cornsilk;
-    margin-left: 50px;
+    
 }
 
 li {
@@ -60,7 +60,7 @@ li {
 }
 
 label {
-    color:red;
+    color:green;
     text-decoration: underline;
     
 }

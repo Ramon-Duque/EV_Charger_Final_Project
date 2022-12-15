@@ -23,12 +23,14 @@ export function DisplayRestaurants({station}: {station:StationInfo}){
    return (
        <div className='restaurant-list'>
            <h2 id='list-header'><IoMdRestaurant/>Restaurants near your station!</h2>
+           <div className='btnResults'>
            {restaurants.slice(0,5).map((restaurant, i) => (
                <><h4 id='location-name'>{restaurant.name}</h4>
                <ul id='rating'>{restaurant.rating} <BsFillStarFill/>'s</ul>
                <ul id='address'>{restaurant.vicinity} MI</ul>
                </>
            ))}
+           </div>
        </div>
    );
 }
@@ -44,11 +46,13 @@ export function DisplayCafes({station}: {station:StationInfo}){
    return (
        <div className='cafe-list'>
            <h2 id='list-header'><IoIosCafe/>Cafe's near your station!</h2>
+           <div className='btnResults'>
            {cafes.slice(0,5).map((cafe, i) => (
                <><h4 id='location-name'>{cafe.name}</h4>
                <ul id='rating'>{cafe.rating} <BsFillStarFill/>'s</ul>
                <ul id='address'>Address: {cafe.vicinity} MI</ul></>           
            ))}
+           </div>
        </div>
    );
 }
@@ -64,11 +68,13 @@ export function DisplayMovieTheaters({station}: {station:StationInfo}){
    return (
        <div className='movie-list'>
            <h2 id='list-header'><MdLocalMovies/>Movie Theaters near your station!</h2>
+           <div className='btnResults'>
            {movieTheater.slice(0,5).map((movies, i) => (
                <><h4 id='location-name'>{movies.name}</h4>
                <ul id='rating'>{movies.rating} <BsFillStarFill/>'s</ul>
                <ul id='address'>Address: {movies.vicinity} MI</ul></>           
            ))}
+           </div>
        </div>
    );
 }
@@ -84,11 +90,13 @@ export function DisplaySpas({station}: {station:StationInfo}){
    return (
        <div className='spa-list'>
            <h2 id='list-header'><TbMassage/>Spa's near your station</h2>
+           <div className='btnResults'>
            {spas.slice(0,5).map((spa, i) => (
                <><h4 id='location-name'>{spa.name}</h4>
                <ul id='rating'>{spa.rating} <BsFillStarFill/>'s</ul>
                <ul id='address'>Address: {spa.vicinity} MI</ul></>            
                ))}
+               </div>
        </div>
    );
 }
@@ -104,11 +112,13 @@ export function DisplayArtGalleries({station}: {station:StationInfo}){
    return (
        <div className='art-gallery-list'>
            <h2 id='list-header'><AiOutlinePicture/>Art Galleries near your station!</h2>
+           <div className='btnResults'>
            {artGalleries.slice(0,5).map((gallery, i) => (
                <><h4 id='location-name'>{gallery.name}</h4>
                <ul id='rating'>{gallery.rating} <BsFillStarFill/>'s</ul>
                <ul id='address'>Address: {gallery.vicinity} MI</ul></>
            ))}
+           </div>
        </div>
    );
 }

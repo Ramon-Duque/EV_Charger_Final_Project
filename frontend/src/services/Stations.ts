@@ -1,7 +1,4 @@
-import { useState } from "react";
-import { Coordinates } from "../App";
 
-// export const getStations = ({pos}:{pos:Coordinates}) => {
 export const getStations = () => {
 
 	const options = {
@@ -12,7 +9,7 @@ export const getStations = () => {
 		}
 	};
 	
-	// return fetch(`https://ev-charging-stations.p.rapidapi.com/get_stations_1km?latitude=${pos.lat}9&longitude=${pos.lng}&region=us`, options)
+	
 	return fetch(`https://ev-charging-stations.p.rapidapi.com/get_stations_1km?latitude=42.34615279&longitude=-83.0551543&region=us`, options)
 	
 }
